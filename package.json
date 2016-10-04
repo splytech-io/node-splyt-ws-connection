@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/splytech-io/splyt-ws-connection.git"
+    "url": "git+https://github.com/splytech-io/node-splyt-ws-connection.git"
   },
   "bugs": {
     "url": "https://github.com/splytech-io/splyt-ws-connection/issues"

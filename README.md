@@ -44,7 +44,7 @@ Can be defined using event listener.
 connection.on('event-name', (/* event args */) => {
 });
 ```
-#### connnect (url: String)
+#### connect (url: String)
 
 ```js
 connection.on('connect', (url) => {
