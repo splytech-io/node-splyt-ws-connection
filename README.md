@@ -9,70 +9,94 @@ const SplytWSConnection = require('@splytech-io/splyt-ws-connection');
 
 const connection = new SplytWSConnection('wss://wsapi.sandbox.splytech.io');
 
+//gets emitted whenever connection with Splyt backend is established
 connection.on('connect', (url) => {
   console.log(`Connection established with ${url}`);
   
-  connection.request('partner.sign-in', {
-    login: 'username',
-    password: 'password',
-  }).catch((e) => console.error(e));
+  //send sign-in request to the Splyt server 
+  //right after connection is established
+  connection
+    .request('partner.sign-in', {
+      login: 'username',
+      password: 'password',
+    })
+    .catch((e) => console.error(e));
 });
 
 connection.on('disconnect', () => {
   console.log(`Connection closed`);
 });
 
+//emitted when Splyt sends a push message
 connection.on('push', (method, data) => {
   //handle push messages
 });
 
-connection.on('request', (method, data, cb) => {
-  //handler request messages
+//emitted when Splyt sends a request message
+connection.on('request', (method, data) => {
+  //handle request messages
+  
   if (method === 'partner.new-trip-request') {
-    cb(null, {}); //send response
+    return Promise.resolve({});
   }
+  
+  return Promise.reject();
 });
 
 ```
 
-## SplytConnection Class API
+## SplytWSConnection Class API
 
 ### events
-Can be defined using event listener.
+Can be defined using co-event-listener.
 
 ```js
-connection.on('event-name', (/* event args */) => {
-});
+connection.on('event-name', /* Promise|GeneratorFunction|ThunkifiedFunction */);
 ```
-#### connect (url: String)
+#### connect(url: String)
+Emitted when WebSocket connection is established.
 
 ```js
-connection.on('connect', (url) => {
+//ie using generator function
+connection.on('connect', function *(url) {
   console.log(`Connection established with ${url}`);
 });
 ```
-#### disconnect ()
+#### disconnect()
+Emitted when WebSocket connection drops.
 
 ```js
 connection.on('disconnect', () => {
   console.log(`Connection closed`);
 });
 ```
-#### push (method: String, data: Object)
+#### push(method: String, data: Object)
+This event is emitted when Splyt server sends `push` message which does not require a response.
 
 ```js
+//ie using resolved promise
 connection.on('push', (method, data) => {
   //handle push message
+
+  return Promise.resolve();
 });
 ```
 
-#### request (method: String, data: Object, cb: Function(err, result));
+#### request(method: String, data: Object): Object;
+This event is emitted when Splyt server sends `request` message.
+The resolved values (or returned values in GeneratorFunctions) are sent back to the Splyt. Rejected (or thrown Exceptions) are converted automatically to failed response messages.
 
 ```js
-connection.on('request', (method, data, cb) => {
+//ie using native ES6 Promise
+connection.on('request', (method, data) => new Promise((resolve, reject) => {
   //handler request messages
+
   if (method === 'partner.new-trip-request') {
-    cb(null, {}); //send response
+    resolve({}); //send response
+
+    return;
   }
-});
+
+  reject('unsupported method called');
+}));
 ```
