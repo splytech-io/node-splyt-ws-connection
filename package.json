@@ -1,6 +1,6 @@
 {
   "name": "@splytech-io/splyt-ws-connection",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Splyt API connection handler",
   "main": "index.js",
   "scripts": {
