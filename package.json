@@ -15,15 +15,11 @@
   "author": "Andrius Skerla",
   "license": "ISC",
   "dependencies": {
-    "@rainder/callbacks": "^0.3.1",
     "@rainder/co-event-emitter": "^0.2.0",
-    "@rainder/defer": "^0.2.0",
-    "bson": "^0.5.5",
-    "co": "^4.6.0",
     "ws": "^1.1.1"
   },
   "devDependencies": {
-    "eslint": "^3.7.1"
+    "eslint": "^3.9.1"
   },
   "repository": {
     "type": "git",

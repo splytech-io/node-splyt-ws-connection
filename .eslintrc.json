@@ -174,7 +174,7 @@
     "prefer-arrow-callback": 1,
     "prefer-const": 1,
     "prefer-numeric-literals": 1,
-    "prefer-reflect": 1,
+    "prefer-reflect": 0,
     "prefer-rest-params": 1,
     "prefer-spread": 1,
     "prefer-template": 1,
