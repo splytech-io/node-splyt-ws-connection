@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@rainder/co-event-emitter": "^0.2.0",
-    "@splytech-io/splyt-ws-message-handler": "0.0.3",
+    "@splytech-io/splyt-ws-message-handler": "0.0.4",
     "ws": "^1.1.1"
   },
   "devDependencies": {
