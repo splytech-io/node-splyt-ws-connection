@@ -2,7 +2,7 @@
   "name": "@splytech-io/splyt-ws-connection",
   "version": "0.2.3",
   "description": "Splyt API connection handler",
-  "main": "index.js",
+  "main": "./lib/splyt-ws-connection",
   "scripts": {
     "test": "mocha"
   },
@@ -16,8 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@rainder/co-event-emitter": "^0.2.0",
-    "@splytech-io/splyt-ws-message-handler": "0.0.4",
-    "ws": "^1.1.1"
+    "@splytech-io/splyt-ws-message-handler": "^0.1.2",
+    "ws": "^2.2.3"
   },
   "devDependencies": {
     "eslint": "^3.9.1"
