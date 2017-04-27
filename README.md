@@ -1,5 +1,7 @@
 # Splyt WebSocket Connection handler
 
+[![Known Vulnerabilities](https://snyk.io/test/npm/@splytech-io/splyt-ws-connection/badge.svg)](https://snyk.io/test/npm/@splytech-io/splyt-ws-connection)
+
 Splyt WebSocket protocol implementation and connection handler.
 
 ## Example
